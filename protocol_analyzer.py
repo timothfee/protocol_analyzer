@@ -346,7 +346,7 @@ def main():
                 protocol_name = input("Protocol name: ").strip().lower()
                 
                 if protocol_name in analyzer.protocol_db:
-                    print(f"⚠️  Protocol '{protocol_name}' already exists!")
+                    print(f"Protocol '{protocol_name}' already exists!")
                     overwrite = input("Overwrite? (y/N): ").strip().lower()
                     if overwrite != 'y':
                         print("Cancelled")
