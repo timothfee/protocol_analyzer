@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Internet Protocol Security Analyzer
-Analyzes protocols and provides risk rankings with overviews
-"""
 
 import json
 import os
@@ -14,7 +10,6 @@ class ProtocolAnalyzer:
         self.protocol_db = self.load_database()
     
     def load_database(self):
-        """Load protocol database from JSON file"""
         try:
             if os.path.exists(self.db_file):
                 with open(self.db_file, 'r') as f:
@@ -28,7 +23,6 @@ class ProtocolAnalyzer:
             return {}
     
     def save_database(self, db=None):
-        """Save protocol database to JSON file"""
         if db is None:
             db = self.protocol_db
         
@@ -40,7 +34,6 @@ class ProtocolAnalyzer:
             print(f"Error saving database: {e}")
     
     def get_risk_color(self, risk_level):
-        """Return ANSI color code for risk level"""
         colors = {
             'LOW': '\033[92m',      # Green
             'MEDIUM': '\033[93m',   # Yellow
@@ -50,11 +43,9 @@ class ProtocolAnalyzer:
         return colors.get(risk_level, '\033[0m')
     
     def reset_color(self):
-        """Return ANSI reset code"""
         return '\033[0m'
     
     def analyze_protocol(self, protocol):
-        """Analyze a single protocol and return formatted information"""
         protocol = protocol.lower().strip()
         
         if protocol not in self.protocol_db:
@@ -80,7 +71,6 @@ class ProtocolAnalyzer:
         return '\n'.join(result)
     
     def get_risk_summary(self, protocols):
-        """Generate a risk summary for all analyzed protocols"""
         risk_counts = {'LOW': 0, 'MEDIUM': 0, 'HIGH': 0, 'CRITICAL': 0}
         valid_protocols = []
         risky_protocols = []  # List of (protocol_name, risk_level)
@@ -135,7 +125,6 @@ class ProtocolAnalyzer:
             return '\n'.join(summary)
     
     def reload_database(self):
-        """Reload the database from the JSON file"""
         try:
             self.protocol_db = self.load_database()
             print(f"Database reloaded from {self.db_file}")
@@ -144,7 +133,6 @@ class ProtocolAnalyzer:
             print(f"Error reloading database: {e}")
     
     def get_database_info(self):
-        """Display information about the current database"""
         print(f"\nDatabase Information:")
         print(f"{'='*50}")
         print(f"Database file: {self.db_file}")
@@ -172,7 +160,6 @@ class ProtocolAnalyzer:
                 print(f"  {color}{risk}{reset}: {count}")
     
     def export_database(self, filename=None):
-        """Export current database to a new JSON file"""
         if filename is None:
             filename = f"protocol_database_backup_{int(time.time())}.json"
         
@@ -184,7 +171,6 @@ class ProtocolAnalyzer:
             print(f"Error exporting database: {e}")
     
     def add_protocol(self, protocol_name, protocol_info):
-        """Add a new protocol to the database"""
         required_fields = ['name', 'description', 'port', 'risks', 'risk_level', 'category']
         
         for field in required_fields:
@@ -198,7 +184,6 @@ class ProtocolAnalyzer:
         print(f"Added protocol: {protocol_name}")
     
     def list_protocols(self):
-        """List all available protocols by category"""
         categories = {}
         for protocol, info in self.protocol_db.items():
             category = info['category']
@@ -217,7 +202,6 @@ class ProtocolAnalyzer:
                 print(f"  • {protocol} ({color}{risk}{reset})")
     
     def search_protocols(self, search_term):
-        """Search for protocols by name, description, or category"""
         search_term = search_term.lower()
         results = []
         
@@ -240,7 +224,6 @@ class ProtocolAnalyzer:
             print(f"No protocols found matching '{search_term}'")
     
     def analyze_from_file(self, filename):
-        """Analyze protocols from a text file"""
         if not os.path.exists(filename):
             return f"File '{filename}' not found"
         
@@ -272,7 +255,7 @@ class ProtocolAnalyzer:
 
 def main():
     analyzer = ProtocolAnalyzer()
-    
+    # Menu
     print("Internet Protocol Security Analyzer by Timothy Fee") 
     print("Can't expect to remember them all!")
     print("="*50)
@@ -290,7 +273,8 @@ def main():
     print("  • 'add'            - Add new protocol")
     print("  • 'help'           - List your options again")
     print("  • 'exit'           - Exit program")
-    
+
+    # Options
     while True:
         user_input = input("\n> ").strip()
         
@@ -409,7 +393,6 @@ def main():
                 if line == "":
                     break
                 if ',' in line:
-                    # Allow comma-separated input in multi-line mode
                     protocols.extend([p.strip() for p in line.split(',') if p.strip()])
                 else:
                     protocols.append(line)
