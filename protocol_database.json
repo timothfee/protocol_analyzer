@@ -1,0 +1,2168 @@
+{
+  "udp": {
+    "name": "User Datagram Protocol",
+    "description": "Connectionless transport layer protocol for fast, unreliable data transmission",
+    "port": "N/A (IP Protocol 17)",
+    "risks": [
+        "No congestion control leading to network flooding",
+        "Vulnerable to UDP flooding DDoS attacks",
+        "No sequence numbers enabling packet injection",
+        "Amplification attacks (DNS, NTP, SNMP)",
+        "Spoofed source IP attacks",
+        "No built-in authentication",
+        "Port scanning vulnerability"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Transport"
+},
+"tcp": {
+    "name": "Transmission Control Protocol",
+    "description": "Connection-oriented, reliable transport layer protocol with error checking and flow control",
+    "port": "N/A (IP Protocol 6)",
+    "risks": [
+        "TCP SYN flooding attacks",
+        "Session hijacking through sequence prediction",
+        "Man-in-the-middle attacks",
+        "TCP reset attacks (RST flooding)",
+        "Port scanning techniques (SYN, ACK, FIN scans)",
+        "TCP header manipulation",
+        "Reflection/amplification attacks in certain implementations"
+    ],
+    "risk_level": "MEDIUM", 
+    "category": "Transport"
+},
+"tls": {
+    "name": "Transport Layer Security",
+    "description": "Cryptographic protocol designed to provide communications security over a computer network",
+    "port": "Various (typically 443, 993, 995, etc.)",
+    "risks": [
+        "Weak cipher suites",
+        "Certificate validation bypass",
+        "Protocol downgrade attacks",
+        "POODLE attack (SSL 3.0 fallback)",
+        "BEAST attack",
+        "Heartbleed vulnerability (OpenSSL specific)",
+        "Invalid certificate acceptance",
+        "CRIME and BREACH compression attacks",
+        "Renegotiation attacks",
+        "Weak random number generation"
+    ],
+    "risk_level": "LOW",
+    "category": "Encryption"
+},
+  "http": {
+    "name": "Hypertext Transfer Protocol",
+    "description": "Protocol for transferring web pages and data between browsers and servers",
+    "port": 80,
+    "risks": [
+      "Unencrypted transmission",
+      "Man-in-the-middle attacks",
+      "Data interception",
+      "Session hijacking",
+      "Credential theft"
+    ],
+    "risk_level": "HIGH",
+    "category": "Web"
+  },
+  "https": {
+    "name": "HTTP Secure",
+    "description": "Encrypted version of HTTP using TLS/SSL for secure web communication",
+    "port": 443,
+    "risks": [
+      "Certificate validation bypass",
+      "Weak cipher suites",
+      "SSL stripping attacks",
+      "Heartbleed vulnerability"
+    ],
+    "risk_level": "LOW",
+    "category": "Web"
+  },
+  "ftp": {
+    "name": "File Transfer Protocol",
+    "description": "Protocol for transferring files between systems",
+    "port": 21,
+    "risks": [
+      "Plaintext credentials",
+      "Data interception",
+      "Bounce attacks",
+      "Anonymous access",
+      "Directory traversal"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "File Transfer"
+  },
+  "ftps": {
+    "name": "FTP Secure",
+    "description": "FTP with SSL/TLS encryption",
+    "port": "990/21",
+    "risks": [
+      "Certificate validation issues",
+      "Mixed mode vulnerabilities",
+      "Firewall complications"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "File Transfer"
+  },
+  "sftp": {
+    "name": "SSH File Transfer Protocol",
+    "description": "Secure file transfer protocol using SSH encryption",
+    "port": 22,
+    "risks": [
+      "Key management issues",
+      "Privilege escalation",
+      "Brute force attacks"
+    ],
+    "risk_level": "LOW",
+    "category": "File Transfer"
+  },
+  "telnet": {
+    "name": "Telnet Protocol",
+    "description": "Protocol for remote terminal access to network devices",
+    "port": 23,
+    "risks": [
+      "Plaintext passwords",
+      "Unencrypted sessions",
+      "Credential theft",
+      "Session hijacking",
+      "Complete system compromise"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Remote Access"
+  },
+  "ssh": {
+    "name": "Secure Shell",
+    "description": "Encrypted protocol for secure remote access and command execution",
+    "port": 22,
+    "risks": [
+      "Brute force attacks",
+      "Key management issues",
+      "Weak algorithms",
+      "User enumeration"
+    ],
+    "risk_level": "LOW",
+    "category": "Remote Access"
+  },
+  "rlogin": {
+    "name": "Remote Login",
+    "description": "Remote login protocol for Unix systems",
+    "port": 513,
+    "risks": [
+      "Plaintext authentication",
+      "No encryption",
+      "Trust-based authentication",
+      "IP spoofing vulnerability"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Remote Access"
+  },
+  "rsh": {
+    "name": "Remote Shell",
+    "description": "Remote shell execution protocol",
+    "port": 514,
+    "risks": [
+      "No authentication",
+      "Plaintext transmission",
+      "Host-based trust",
+      "Command injection"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Remote Access"
+  },
+  "smtp": {
+    "name": "Simple Mail Transfer Protocol",
+    "description": "Protocol for sending email messages between servers",
+    "port": 25,
+    "risks": [
+      "Email spoofing",
+      "Spam relay",
+      "Unencrypted transmission",
+      "Header injection",
+      "Open relay abuse"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Email"
+  },
+  "smtps": {
+    "name": "SMTP Secure",
+    "description": "SMTP with SSL/TLS encryption",
+    "port": 465,
+    "risks": [
+      "Certificate validation bypass",
+      "Weak cipher suites",
+      "STARTTLS downgrade"
+    ],
+    "risk_level": "LOW",
+    "category": "Email"
+  },
+  "pop3": {
+    "name": "Post Office Protocol v3",
+    "description": "Protocol for retrieving email from a mail server",
+    "port": 110,
+    "risks": [
+      "Plaintext authentication",
+      "Email interception",
+      "Password sniffing",
+      "No encryption"
+    ],
+    "risk_level": "HIGH",
+    "category": "Email"
+  },
+  "pop3s": {
+    "name": "POP3 Secure",
+    "description": "POP3 with SSL/TLS encryption",
+    "port": 995,
+    "risks": [
+      "Certificate validation issues",
+      "Weak cipher suites"
+    ],
+    "risk_level": "LOW",
+    "category": "Email"
+  },
+  "imap": {
+    "name": "Internet Message Access Protocol",
+    "description": "Protocol for accessing email on a remote server",
+    "port": 143,
+    "risks": [
+      "Plaintext authentication",
+      "Email interception",
+      "Session hijacking",
+      "Command injection"
+    ],
+    "risk_level": "HIGH",
+    "category": "Email"
+  },
+  "imaps": {
+    "name": "IMAP Secure",
+    "description": "IMAP with SSL/TLS encryption",
+    "port": 993,
+    "risks": [
+      "Certificate validation bypass",
+      "Weak cipher suites"
+    ],
+    "risk_level": "LOW",
+    "category": "Email"
+  },
+  "dns": {
+    "name": "Domain Name System",
+    "description": "Protocol for translating domain names to IP addresses",
+    "port": 53,
+    "risks": [
+      "DNS poisoning",
+      "Cache poisoning",
+      "DDoS amplification",
+      "DNS tunneling",
+      "Zone transfer attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Services"
+  },
+  "dhcp": {
+    "name": "Dynamic Host Configuration Protocol",
+    "description": "Protocol for automatically assigning IP addresses to network devices",
+    "port": "67/68",
+    "risks": [
+      "DHCP spoofing",
+      "Rogue DHCP servers",
+      "Network hijacking",
+      "Information disclosure",
+      "DHCP starvation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Network Services"
+  },
+  "llmnr": {
+    "name": "Link-Local Multicast Name Resolution",
+    "description": "Protocol that allows IPv4 and IPv6 hosts to perform name resolution for hosts on the same local link without a DNS server",
+    "port": "5355/UDP",
+    "risks": [
+        "Spoofing attacks allowing attackers to poison LLMNR responses",
+        "Credential theft via responder tools that capture NTLMv2 hashes",
+        "Man-in-the-middle attacks on local network",
+        "No authentication mechanism for responses",
+        "Broadcast/multicast traffic can be monitored by any local host",
+        "Often enabled by default on Windows systems",
+        "Can be used for NetNTLM relay attacks",
+        "Provides fallback mechanism when DNS fails, expanding attack surface"
+    ],
+    "risk_level": "HIGH",
+    "category": "Name Resolution"
+},
+  "tftp": {
+    "name": "Trivial File Transfer Protocol",
+    "description": "Simplified file transfer protocol without authentication",
+    "port": 69,
+    "risks": [
+      "No authentication",
+      "No encryption",
+      "Directory traversal",
+      "Information disclosure",
+      "Configuration theft"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "File Transfer"
+  },
+  "finger": {
+    "name": "Finger Protocol",
+    "description": "Protocol for looking up user information",
+    "port": 79,
+    "risks": [
+      "Information disclosure",
+      "User enumeration",
+      "Privacy violations",
+      "No authentication",
+      "Social engineering data"
+    ],
+    "risk_level": "HIGH",
+    "category": "Information Services"
+  },
+  "snmp": {
+    "name": "Simple Network Management Protocol",
+    "description": "Protocol for managing and monitoring network devices",
+    "port": 161,
+    "risks": [
+      "Weak community strings",
+      "Information disclosure",
+      "Unauthorized configuration changes",
+      "Default credentials",
+      "Amplification attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Management"
+  },
+  "snmp-trap": {
+    "name": "SNMP Trap",
+    "description": "SNMP notifications sent by agents to managers",
+    "port": 162,
+    "risks": [
+      "Information disclosure",
+      "Spoofed notifications",
+      "DoS attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Network Management"
+  },
+  "ntp": {
+    "name": "Network Time Protocol",
+    "description": "Protocol for synchronizing clocks across network devices",
+    "port": 123,
+    "risks": [
+      "Time manipulation",
+      "DDoS amplification",
+      "Authentication bypass",
+      "Replay attacks",
+      "Monlist attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Network Services"
+  },
+  "nntp": {
+    "name": "Network News Transfer Protocol",
+    "description": "Protocol for reading and posting Usenet articles",
+    "port": 119,
+    "risks": [
+      "Information disclosure",
+      "Spam distribution",
+      "Content manipulation",
+      "Authentication bypass"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Information Services"
+  },
+  "ldap": {
+    "name": "Lightweight Directory Access Protocol",
+    "description": "Protocol for accessing and maintaining directory information services",
+    "port": 389,
+    "risks": [
+      "Plaintext authentication",
+      "Information disclosure",
+      "Directory injection",
+      "Enumeration attacks",
+      "Credential theft"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Directory Services"
+  },
+  "ldaps": {
+    "name": "LDAP over SSL/TLS",
+    "description": "Secure version of LDAP using SSL/TLS encryption",
+    "port": 636,
+    "risks": [
+      "Certificate validation issues",
+      "Weak cipher suites",
+      "Directory injection"
+    ],
+    "risk_level": "LOW",
+    "category": "Directory Services"
+  },
+  "rpcbind": {
+    "name": "RPC Port Mapper",
+    "description": "Service for mapping RPC program numbers to port numbers",
+    "port": 111,
+    "risks": [
+      "Service enumeration",
+      "Information disclosure",
+      "RPC flooding",
+      "Amplification attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "RPC Services"
+  },
+  "nfs": {
+    "name": "Network File System",
+    "description": "Protocol for distributed file sharing",
+    "port": 2049,
+    "risks": [
+      "Unauthorized file access",
+      "Data interception",
+      "Root squashing bypass",
+      "Export misconfiguration",
+      "No built-in encryption"
+    ],
+    "risk_level": "HIGH",
+    "category": "File Services"
+  },
+  "mysql": {
+    "name": "MySQL Database Protocol",
+    "description": "Protocol for communicating with MySQL database servers",
+    "port": 3306,
+    "risks": [
+      "SQL injection",
+      "Weak authentication",
+      "Data exposure",
+      "Privilege escalation",
+      "Brute force attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "postgresql": {
+    "name": "PostgreSQL Database Protocol",
+    "description": "Protocol for PostgreSQL database communication",
+    "port": 5432,
+    "risks": [
+      "SQL injection",
+      "Authentication bypass",
+      "Data exposure",
+      "Command execution"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "mssql": {
+    "name": "Microsoft SQL Server",
+    "description": "Microsoft SQL Server database protocol",
+    "port": 1433,
+    "risks": [
+      "SQL injection",
+      "xp_cmdshell abuse",
+      "Weak authentication",
+      "Data exposure",
+      "Linked server attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "oracle": {
+    "name": "Oracle Database",
+    "description": "Oracle database listener protocol",
+    "port": 1521,
+    "risks": [
+      "TNS poisoning",
+      "Weak authentication",
+      "SQL injection",
+      "Data exposure",
+      "Privilege escalation"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "mongodb": {
+    "name": "MongoDB Database",
+    "description": "MongoDB NoSQL database protocol",
+    "port": 27017,
+    "risks": [
+      "No authentication default",
+      "Data exposure",
+      "NoSQL injection",
+      "GridFS abuse"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "redis": {
+    "name": "Redis Database",
+    "description": "Redis in-memory database protocol",
+    "port": 6379,
+    "risks": [
+      "No authentication default",
+      "Code execution",
+      "Data exposure",
+      "Configuration manipulation"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Database"
+  },
+  "memcached": {
+    "name": "Memcached",
+    "description": "Distributed memory caching system",
+    "port": 11211,
+    "risks": [
+      "No authentication",
+      "Data exposure",
+      "Cache poisoning",
+      "DDoS amplification"
+    ],
+    "risk_level": "HIGH",
+    "category": "Caching"
+  },
+  "rdp": {
+    "name": "Remote Desktop Protocol",
+    "description": "Microsoft protocol for remote desktop access",
+    "port": 3389,
+    "risks": [
+      "Brute force attacks",
+      "Credential theft",
+      "Man-in-the-middle attacks",
+      "BlueKeep vulnerability",
+      "Session hijacking"
+    ],
+    "risk_level": "HIGH",
+    "category": "Remote Access"
+  },
+  "vnc": {
+    "name": "Virtual Network Computing",
+    "description": "Protocol for remote desktop sharing and control",
+    "port": 5900,
+    "risks": [
+      "Weak authentication",
+      "Unencrypted transmission",
+      "Session hijacking",
+      "Password brute force"
+    ],
+    "risk_level": "HIGH",
+    "category": "Remote Access"
+  },
+  "x11": {
+    "name": "X Window System",
+    "description": "Network protocol for GUI applications",
+    "port": 6000,
+    "risks": [
+      "Display hijacking",
+      "Keylogger attacks",
+      "Screen capture",
+      "No authentication default"
+    ],
+    "risk_level": "HIGH",
+    "category": "Display Services"
+  },
+  "cups": {
+    "name": "Common Unix Printing System",
+    "description": "Printing system for Unix-like systems",
+    "port": 631,
+    "risks": [
+      "Print job interception",
+      "Configuration manipulation",
+      "File system access",
+      "Code execution"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Printing"
+  },
+  "ipp": {
+    "name": "Internet Printing Protocol",
+    "description": "Protocol for network printing",
+    "port": 631,
+    "risks": [
+      "Print job manipulation",
+      "Information disclosure",
+      "Buffer overflow vulnerabilities"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Printing"
+  },
+  "samba": {
+    "name": "Server Message Block (SMB)",
+    "description": "Protocol for file and printer sharing",
+    "port": 445,
+    "risks": [
+      "EternalBlue exploit",
+      "SMB relay attacks",
+      "Credential theft",
+      "Lateral movement",
+      "Ransomware propagation"
+    ],
+    "risk_level": "HIGH",
+    "category": "File Services"
+  },
+  "netbios": {
+    "name": "NetBIOS Name Service",
+    "description": "Name resolution service for NetBIOS",
+    "port": 137,
+    "risks": [
+      "Information disclosure",
+      "Name spoofing",
+      "Network enumeration",
+      "NBNS poisoning"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Name Services"
+  },
+  "netbios-dgm": {
+    "name": "NetBIOS Datagram Service",
+    "description": "NetBIOS datagram distribution service",
+    "port": 138,
+    "risks": [
+      "Information disclosure",
+      "Network scanning",
+      "DoS attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Name Services"
+  },
+  "netbios-ssn": {
+    "name": "NetBIOS Session Service",
+    "description": "NetBIOS session layer service",
+    "port": 139,
+    "risks": [
+      "Session hijacking",
+      "Credential theft",
+      "SMB relay attacks",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Name Services"
+  },
+  "kerberos": {
+    "name": "Kerberos Authentication",
+    "description": "Network authentication protocol",
+    "port": 88,
+    "risks": [
+      "Ticket manipulation",
+      "Golden ticket attacks",
+      "Silver ticket attacks",
+      "Kerberoasting",
+      "AS-REP roasting"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Authentication"
+  },
+  "radius": {
+    "name": "Remote Authentication Dial-In User Service",
+    "description": "Network access server authentication protocol",
+    "port": 1812,
+    "risks": [
+      "Weak shared secrets",
+      "Authentication bypass",
+      "Man-in-the-middle attacks",
+      "Credential theft"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Authentication"
+  },
+  "tacacs": {
+    "name": "Terminal Access Controller Access-Control System",
+    "description": "Authentication protocol for network devices",
+    "port": 49,
+    "risks": [
+      "Weak encryption",
+      "Authentication bypass",
+      "Credential interception"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Authentication"
+  },
+  "syslog": {
+    "name": "System Logging Protocol",
+    "description": "Standard for message logging",
+    "port": 514,
+    "risks": [
+      "Log injection",
+      "Information disclosure",
+      "Log tampering",
+      "DoS attacks",
+      "No authentication"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Logging"
+  },
+  "rsyslog": {
+    "name": "Rocket-fast System for Log processing",
+    "description": "Enhanced syslog implementation",
+    "port": 514,
+    "risks": [
+      "Log injection",
+      "Remote code execution",
+      "DoS attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Logging"
+  },
+  "icmp": {
+    "name": "Internet Control Message Protocol",
+    "description": "Protocol for sending error messages and operational information",
+    "port": "N/A (IP Protocol)",
+    "risks": [
+      "Network mapping",
+      "Covert channels",
+      "DoS attacks",
+      "Information disclosure",
+      "Ping of death"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Network Management"
+  },
+  "igmp": {
+    "name": "Internet Group Management Protocol",
+    "description": "Protocol for managing multicast group memberships",
+    "port": "N/A (IP Protocol)",
+    "risks": [
+      "Multicast flooding",
+      "Network reconnaissance",
+      "DoS attacks",
+      "IGMP spoofing"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Network Management"
+  },
+  "bgp": {
+    "name": "Border Gateway Protocol",
+    "description": "Protocol for exchanging routing information between networks",
+    "port": 179,
+    "risks": [
+      "Route hijacking",
+      "BGP hijacking",
+      "Man-in-the-middle attacks",
+      "Traffic interception",
+      "DoS attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "Routing"
+  },
+  "rip": {
+    "name": "Routing Information Protocol",
+    "description": "Distance-vector routing protocol",
+    "port": 520,
+    "risks": [
+      "Route poisoning",
+      "Authentication bypass",
+      "Routing loops",
+      "Network disruption"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Routing"
+  },
+  "ospf": {
+    "name": "Open Shortest Path First",
+    "description": "Link-state routing protocol",
+    "port": "N/A (IP Protocol 89)",
+    "risks": [
+      "LSA flooding",
+      "Authentication bypass",
+      "Routing manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Routing"
+  },
+  "sip": {
+    "name": "Session Initiation Protocol",
+    "description": "Protocol for VoIP call setup and management",
+    "port": 5060,
+    "risks": [
+      "Call hijacking",
+      "Eavesdropping",
+      "Toll fraud",
+      "Registration hijacking",
+      "DoS attacks"
+    ],
+    "risk_level": "HIGH",
+    "category": "VoIP"
+  },
+  "sips": {
+    "name": "SIP Secure",
+    "description": "SIP with TLS encryption",
+    "port": 5061,
+    "risks": [
+      "Certificate validation bypass",
+      "Downgrade attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "VoIP"
+  },
+  "rtp": {
+    "name": "Real-time Transport Protocol",
+    "description": "Protocol for delivering audio and video streams",
+    "port": "Dynamic",
+    "risks": [
+      "Eavesdropping",
+      "Stream injection",
+      "Quality degradation attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Media"
+  },
+  "rtsp": {
+    "name": "Real Time Streaming Protocol",
+    "description": "Protocol for controlling streaming media servers",
+    "port": 554,
+    "risks": [
+      "Authentication bypass",
+      "Buffer overflow",
+      "Information disclosure",
+      "Session hijacking"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Media"
+  },
+  "irc": {
+    "name": "Internet Relay Chat",
+    "description": "Protocol for real-time text messaging",
+    "port": 6667,
+    "risks": [
+      "Botnet command and control",
+      "DCC exploits",
+      "Social engineering",
+      "Information disclosure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Chat"
+  },
+  "ircs": {
+    "name": "IRC Secure",
+    "description": "IRC with SSL/TLS encryption",
+    "port": 6697,
+    "risks": [
+      "Certificate validation bypass",
+      "Weak cipher suites"
+    ],
+    "risk_level": "LOW",
+    "category": "Chat"
+  },
+  "xmpp": {
+    "name": "Extensible Messaging and Presence Protocol",
+    "description": "Protocol for instant messaging and presence",
+    "port": 5222,
+    "risks": [
+      "XML injection",
+      "Information disclosure",
+      "Authentication bypass"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Chat"
+  },
+  "xmpps": {
+    "name": "XMPP Secure",
+    "description": "XMPP with TLS encryption",
+    "port": 5223,
+    "risks": [
+      "Certificate validation issues",
+      "XML injection"
+    ],
+    "risk_level": "LOW",
+    "category": "Chat"
+  },
+  "elasticsearch": {
+    "name": "Elasticsearch",
+    "description": "Distributed search and analytics engine",
+    "port": 9200,
+    "risks": [
+      "No authentication default",
+      "Data exposure",
+      "Query injection",
+      "Code execution"
+    ],
+    "risk_level": "HIGH",
+    "category": "Search Engine"
+  },
+  "kibana": {
+    "name": "Kibana",
+    "description": "Data visualization dashboard for Elasticsearch",
+    "port": 5601,
+    "risks": [
+      "Information disclosure",
+      "Authentication bypass",
+      "XSS vulnerabilities"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Visualization"
+  },
+  "docker": {
+    "name": "Docker Engine API",
+    "description": "API for Docker container management",
+    "port": 2376,
+    "risks": [
+      "Container escape",
+      "Privilege escalation",
+      "Host compromise",
+      "Image tampering"
+    ],
+    "risk_level": "HIGH",
+    "category": "Container"
+  },
+  "kubernetes": {
+    "name": "Kubernetes API Server",
+    "description": "API server for Kubernetes orchestration",
+    "port": 6443,
+    "risks": [
+      "Unauthorized access",
+      "Privilege escalation",
+      "Cluster compromise",
+      "Secret exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Orchestration"
+  },
+  "etcd": {
+    "name": "etcd Key-Value Store",
+    "description": "Distributed key-value store for Kubernetes",
+    "port": 2379,
+    "risks": [
+      "Data exposure",
+      "Configuration manipulation",
+      "No authentication default"
+    ],
+    "risk_level": "HIGH",
+    "category": "Key-Value Store"
+  },
+  "consul": {
+    "name": "HashiCorp Consul",
+    "description": "Service mesh and configuration management",
+    "port": 8500,
+    "risks": [
+      "Service manipulation",
+      "Configuration exposure",
+      "ACL bypass"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Service Discovery"
+  },
+  "zookeeper": {
+    "name": "Apache ZooKeeper",
+    "description": "Centralized coordination service",
+    "port": 2181,
+    "risks": [
+      "Configuration manipulation",
+      "Data exposure",
+      "Four letter word attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Coordination"
+  },
+  "kafka": {
+    "name": "Apache Kafka",
+    "description": "Distributed streaming platform",
+    "port": 9092,
+    "risks": [
+      "Message interception",
+      "Topic manipulation",
+      "No authentication default"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Message Queue"
+  },
+  "rabbitmq": {
+    "name": "RabbitMQ",
+    "description": "Message broker for applications",
+    "port": 5672,
+    "risks": [
+      "Default credentials",
+      "Message tampering",
+      "Queue manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Message Queue"
+  },
+  "activemq": {
+    "name": "Apache ActiveMQ",
+    "description": "Java message broker",
+    "port": 61616,
+    "risks": [
+      "Default credentials",
+      "Deserialization attacks",
+      "JMX exploitation"
+    ],
+    "risk_level": "HIGH",
+    "category": "Message Queue"
+  },
+  "jenkins": {
+    "name": "Jenkins CI/CD",
+    "description": "Continuous integration and deployment server",
+    "port": 8080,
+    "risks": [
+      "Code execution",
+      "Credential theft",
+      "Build manipulation",
+      "Plugin vulnerabilities"
+    ],
+    "risk_level": "HIGH",
+    "category": "CI/CD"
+  },
+  "gitlab": {
+    "name": "GitLab",
+    "description": "Git repository management and CI/CD platform",
+    "port": 80,
+    "risks": [
+      "Repository exposure",
+      "Secret leakage",
+      "Pipeline manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Git Repository"
+  },
+  "git": {
+    "name": "Git Protocol",
+    "description": "Version control system protocol",
+    "port": 9418,
+    "risks": [
+      "Repository exposure",
+      "No authentication",
+      "Data interception"
+    ],
+    "risk_level": "HIGH",
+    "category": "Version Control"
+  },
+  "subversion": {
+    "name": "Apache Subversion",
+    "description": "Centralized version control system",
+    "port": 3690,
+    "risks": [
+      "Repository enumeration",
+      "Credential theft",
+      "Path traversal"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Version Control"
+  },
+  "rsync": {
+    "name": "Remote Sync",
+    "description": "File synchronization and transfer utility",
+    "port": 873,
+    "risks": [
+      "Path traversal",
+      "Information disclosure",
+      "Unauthorized file access"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "File Sync"
+  },
+  "distcc": {
+    "name": "Distributed Compiler",
+    "description": "Distributed compilation system",
+    "port": 3632,
+    "risks": [
+      "Code execution",
+      "No authentication",
+      "Build tampering"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Development Tools"
+  },
+  "java-rmi": {
+    "name": "Java Remote Method Invocation",
+    "description": "Java distributed computing protocol",
+    "port": 1099,
+    "risks": [
+      "Deserialization attacks",
+      "Code execution",
+      "Object manipulation"
+    ],
+    "risk_level": "HIGH",
+    "category": "Java Services"
+  },
+  "jmx": {
+    "name": "Java Management Extensions",
+    "description": "Java application monitoring and management",
+    "port": "Dynamic",
+    "risks": [
+      "Code execution",
+      "Application manipulation",
+      "Memory dumping"
+    ],
+    "risk_level": "HIGH",
+    "category": "Java Services"
+  },
+  "cassandra": {
+    "name": "Apache Cassandra",
+    "description": "Distributed NoSQL database",
+    "port": 9042,
+    "risks": [
+      "CQL injection",
+      "No authentication default",
+      "Data exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "couchdb": {
+    "name": "Apache CouchDB",
+    "description": "NoSQL document database",
+    "port": 5984,
+    "risks": [
+      "Admin party mode",
+      "Document exposure",
+      "Code execution"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "influxdb": {
+    "name": "InfluxDB",
+    "description": "Time series database",
+    "port": 8086,
+    "risks": [
+      "No authentication default",
+      "Data exposure",
+      "Query injection",
+      "Database manipulation"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database"
+  },
+  "grafana": {
+    "name": "Grafana",
+    "description": "Analytics and monitoring solution",
+    "port": 3000,
+    "risks": [
+      "Default credentials",
+      "Data source exposure",
+      "Dashboard manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Monitoring"
+  },
+  "prometheus": {
+    "name": "Prometheus",
+    "description": "Monitoring system and time series database",
+    "port": 9090,
+    "risks": [
+      "Metric exposure",
+      "No authentication default",
+      "Information disclosure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Monitoring"
+  },
+  "nagios": {
+    "name": "Nagios",
+    "description": "Network and infrastructure monitoring",
+    "port": 5666,
+    "risks": [
+      "Command execution",
+      "Weak authentication",
+      "Configuration exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Monitoring"
+  },
+  "zabbix": {
+    "name": "Zabbix",
+    "description": "Enterprise monitoring solution",
+    "port": 10050,
+    "risks": [
+      "Agent command execution",
+      "Information disclosure",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Monitoring"
+  },
+  "collectd": {
+    "name": "Collectd",
+    "description": "System statistics collection daemon",
+    "port": 25826,
+    "risks": [
+      "Information disclosure",
+      "No authentication",
+      "DoS attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Monitoring"
+  },
+  "statsd": {
+    "name": "StatsD",
+    "description": "Network daemon for statistics collection",
+    "port": 8125,
+    "risks": [
+      "Metric poisoning",
+      "DoS attacks",
+      "No authentication"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Monitoring"
+  },
+  "splunk": {
+    "name": "Splunk",
+    "description": "Data platform for searching and analyzing logs",
+    "port": 8089,
+    "risks": [
+      "Log injection",
+      "Privilege escalation",
+      "Data exposure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Log Analysis"
+  },
+  "logstash": {
+    "name": "Logstash",
+    "description": "Data processing pipeline for logs",
+    "port": 5044,
+    "risks": [
+      "Log injection",
+      "Data tampering",
+      "Pipeline manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Log Processing"
+  },
+  "fluentd": {
+    "name": "Fluentd",
+    "description": "Data collector for unified logging layer",
+    "port": 24224,
+    "risks": [
+      "Log injection",
+      "Buffer overflow",
+      "Data exposure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Log Processing"
+  },
+  "graylog": {
+    "name": "Graylog",
+    "description": "Log management and analysis platform",
+    "port": 12201,
+    "risks": [
+      "Authentication bypass",
+      "Log injection",
+      "Information disclosure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Log Analysis"
+  },
+  "apache": {
+    "name": "Apache HTTP Server",
+    "description": "Open-source web server software",
+    "port": 80,
+    "risks": [
+      "Directory traversal",
+      "Server-side includes",
+      "Module vulnerabilities",
+      "Information disclosure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Server"
+  },
+  "nginx": {
+    "name": "Nginx",
+    "description": "High-performance web server and reverse proxy",
+    "port": 80,
+    "risks": [
+      "Configuration exposure",
+      "Buffer overflow",
+      "Request smuggling"
+    ],
+    "risk_level": "LOW",
+    "category": "Web Server"
+  },
+  "lighttpd": {
+    "name": "Lighttpd",
+    "description": "Lightweight web server",
+    "port": 80,
+    "risks": [
+      "CGI vulnerabilities",
+      "Path traversal",
+      "Memory corruption"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Server"
+  },
+  "tomcat": {
+    "name": "Apache Tomcat",
+    "description": "Java servlet container",
+    "port": 8080,
+    "risks": [
+      "Default credentials",
+      "WAR file deployment",
+      "Directory traversal",
+      "Manager application abuse"
+    ],
+    "risk_level": "HIGH",
+    "category": "Application Server"
+  },
+  "jboss": {
+    "name": "JBoss Application Server",
+    "description": "Java EE application server",
+    "port": 8080,
+    "risks": [
+      "JMX console exposure",
+      "Deserialization attacks",
+      "WAR deployment abuse"
+    ],
+    "risk_level": "HIGH",
+    "category": "Application Server"
+  },
+  "weblogic": {
+    "name": "Oracle WebLogic",
+    "description": "Java EE application server",
+    "port": 7001,
+    "risks": [
+      "Deserialization attacks",
+      "Console exposure",
+      "T3 protocol abuse"
+    ],
+    "risk_level": "HIGH",
+    "category": "Application Server"
+  },
+  "websphere": {
+    "name": "IBM WebSphere",
+    "description": "Java EE application server",
+    "port": 9080,
+    "risks": [
+      "Administrative console exposure",
+      "SOAP injection",
+      "Weak encryption"
+    ],
+    "risk_level": "HIGH",
+    "category": "Application Server"
+  },
+  "iis": {
+    "name": "Internet Information Services",
+    "description": "Microsoft web server",
+    "port": 80,
+    "risks": [
+      "IIS shortname vulnerability",
+      "ASP.NET vulnerabilities",
+      "WebDAV abuse"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Server"
+  },
+  "nodejs": {
+    "name": "Node.js",
+    "description": "JavaScript runtime server",
+    "port": 3000,
+    "risks": [
+      "Code injection",
+      "Prototype pollution",
+      "Package vulnerabilities"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Application Server"
+  },
+  "php-fpm": {
+    "name": "PHP FastCGI Process Manager",
+    "description": "PHP process manager",
+    "port": 9000,
+    "risks": [
+      "Code execution",
+      "Information disclosure",
+      "Configuration exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Application Server"
+  },
+  "ruby-rails": {
+    "name": "Ruby on Rails",
+    "description": "Ruby web application framework",
+    "port": 3000,
+    "risks": [
+      "Mass assignment",
+      "SQL injection",
+      "YAML deserialization"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Framework"
+  },
+  "django": {
+    "name": "Django",
+    "description": "Python web framework",
+    "port": 8000,
+    "risks": [
+      "Template injection",
+      "SQL injection",
+      "Debug mode exposure"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Framework"
+  },
+  "flask": {
+    "name": "Flask",
+    "description": "Python micro web framework",
+    "port": 5000,
+    "risks": [
+      "Template injection",
+      "Debug mode exposure",
+      "Session manipulation"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Framework"
+  },
+  "express": {
+    "name": "Express.js",
+    "description": "Node.js web application framework",
+    "port": 3000,
+    "risks": [
+      "Middleware vulnerabilities",
+      "Parameter pollution",
+      "Route hijacking"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Framework"
+  },
+  "spring-boot": {
+    "name": "Spring Boot",
+    "description": "Java application framework",
+    "port": 8080,
+    "risks": [
+      "Actuator endpoints exposure",
+      "SpEL injection",
+      "Deserialization attacks"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Web Framework"
+  },
+  "struts": {
+    "name": "Apache Struts",
+    "description": "Java web application framework",
+    "port": 8080,
+    "risks": [
+      "OGNL injection",
+      "Remote code execution",
+      "File upload vulnerabilities"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Web Framework"
+  },
+  "wordpress": {
+    "name": "WordPress",
+    "description": "Content management system",
+    "port": 80,
+    "risks": [
+      "Plugin vulnerabilities",
+      "Theme vulnerabilities",
+      "Brute force attacks",
+      "SQL injection"
+    ],
+    "risk_level": "HIGH",
+    "category": "CMS"
+  },
+  "drupal": {
+    "name": "Drupal",
+    "description": "Content management framework",
+    "port": 80,
+    "risks": [
+      "Drupalgeddon vulnerabilities",
+      "Module vulnerabilities",
+      "SQL injection"
+    ],
+    "risk_level": "HIGH",
+    "category": "CMS"
+  },
+  "joomla": {
+    "name": "Joomla",
+    "description": "Content management system",
+    "port": 80,
+    "risks": [
+      "Component vulnerabilities",
+      "SQL injection",
+      "Directory traversal"
+    ],
+    "risk_level": "HIGH",
+    "category": "CMS"
+  },
+  "magento": {
+    "name": "Magento",
+    "description": "E-commerce platform",
+    "port": 80,
+    "risks": [
+      "Shoplift vulnerability",
+      "SQL injection",
+      "Admin panel exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "E-commerce"
+  },
+  "prestashop": {
+    "name": "PrestaShop",
+    "description": "E-commerce solution",
+    "port": 80,
+    "risks": [
+      "Module vulnerabilities",
+      "SQL injection",
+      "File upload abuse"
+    ],
+    "risk_level": "HIGH",
+    "category": "E-commerce"
+  },
+  "opencart": {
+    "name": "OpenCart",
+    "description": "E-commerce platform",
+    "port": 80,
+    "risks": [
+      "SQL injection",
+      "File upload vulnerabilities",
+      "Admin bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "E-commerce"
+  },
+  "phpmyadmin": {
+    "name": "phpMyAdmin",
+    "description": "MySQL database administration tool",
+    "port": 80,
+    "risks": [
+      "Weak authentication",
+      "SQL injection",
+      "File inclusion",
+      "Code execution"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database Admin"
+  },
+  "adminer": {
+    "name": "Adminer",
+    "description": "Database management tool",
+    "port": 80,
+    "risks": [
+      "Information disclosure",
+      "SQL injection",
+      "File system access"
+    ],
+    "risk_level": "HIGH",
+    "category": "Database Admin"
+  },
+  "webmin": {
+    "name": "Webmin",
+    "description": "Web-based system administration",
+    "port": 10000,
+    "risks": [
+      "Command execution",
+      "Privilege escalation",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "System Admin"
+  },
+  "cpanel": {
+    "name": "cPanel",
+    "description": "Web hosting control panel",
+    "port": 2083,
+    "risks": [
+      "Privilege escalation",
+      "Account takeover",
+      "File system access"
+    ],
+    "risk_level": "HIGH",
+    "category": "Hosting Panel"
+  },
+  "plesk": {
+    "name": "Plesk",
+    "description": "Web hosting control panel",
+    "port": 8443,
+    "risks": [
+      "Authentication bypass",
+      "Command execution",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Hosting Panel"
+  },
+  "ispconfig": {
+    "name": "ISPConfig",
+    "description": "Web hosting control panel",
+    "port": 8080,
+    "risks": [
+      "SQL injection",
+      "Command execution",
+      "Privilege escalation"
+    ],
+    "risk_level": "HIGH",
+    "category": "Hosting Panel"
+  },
+  "virtualmin": {
+    "name": "Virtualmin",
+    "description": "Web hosting control panel",
+    "port": 10000,
+    "risks": [
+      "Command execution",
+      "File system access",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Hosting Panel"
+  },
+  "cacti": {
+    "name": "Cacti",
+    "description": "Network monitoring and graphing tool",
+    "port": 80,
+    "risks": [
+      "Command injection",
+      "SQL injection",
+      "File inclusion"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Monitoring"
+  },
+  "prtg": {
+    "name": "PRTG Network Monitor",
+    "description": "Network monitoring solution",
+    "port": 8080,
+    "risks": [
+      "Authentication bypass",
+      "Command execution",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Monitoring"
+  },
+  "observium": {
+    "name": "Observium",
+    "description": "Network monitoring platform",
+    "port": 80,
+    "risks": [
+      "SQL injection",
+      "Command execution",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Monitoring"
+  },
+  "pandora-fms": {
+    "name": "Pandora FMS",
+    "description": "Network and infrastructure monitoring",
+    "port": 80,
+    "risks": [
+      "SQL injection",
+      "File upload abuse",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Monitoring"
+  },
+  "opennms": {
+    "name": "OpenNMS",
+    "description": "Network management platform",
+    "port": 8980,
+    "risks": [
+      "Authentication bypass",
+      "Command execution",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Monitoring"
+  },
+  "pfsense": {
+    "name": "pfSense",
+    "description": "Open source firewall and router",
+    "port": 443,
+    "risks": [
+      "Command injection",
+      "Authentication bypass",
+      "Configuration tampering"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "opnsense": {
+    "name": "OPNsense",
+    "description": "Open source firewall and routing platform",
+    "port": 443,
+    "risks": [
+      "Command injection",
+      "Privilege escalation",
+      "Configuration exposure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "sophos": {
+    "name": "Sophos Firewall",
+    "description": "Enterprise firewall solution",
+    "port": 4444,
+    "risks": [
+      "Authentication bypass",
+      "Command execution",
+      "Zero-day exploits"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "fortinet": {
+    "name": "FortiGate",
+    "description": "Network security appliance",
+    "port": 443,
+    "risks": [
+      "Authentication bypass",
+      "Command injection",
+      "SSL VPN vulnerabilities"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "checkpoint": {
+    "name": "Check Point",
+    "description": "Network security management",
+    "port": 443,
+    "risks": [
+      "SmartConsole vulnerabilities",
+      "Gaia OS exploits",
+      "Management bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "palo-alto": {
+    "name": "Palo Alto Networks",
+    "description": "Next-generation firewall",
+    "port": 443,
+    "risks": [
+      "GlobalProtect vulnerabilities",
+      "Management interface exploits",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "cisco-asa": {
+    "name": "Cisco ASA",
+    "description": "Adaptive Security Appliance",
+    "port": 443,
+    "risks": [
+      "Path traversal",
+      "Authentication bypass",
+      "Memory corruption"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "juniper-srx": {
+    "name": "Juniper SRX",
+    "description": "Services gateway firewall",
+    "port": 443,
+    "risks": [
+      "ScreenOS backdoor",
+      "J-Web vulnerabilities",
+      "Configuration tampering"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Security"
+  },
+  "mikrotik": {
+    "name": "MikroTik RouterOS",
+    "description": "Router operating system",
+    "port": 8291,
+    "risks": [
+      "Winbox vulnerabilities",
+      "Default credentials",
+      "Buffer overflow",
+      "RouterOS exploits"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Network Equipment"
+  },
+  "ubiquiti": {
+    "name": "Ubiquiti UniFi",
+    "description": "Network management controller",
+    "port": 8443,
+    "risks": [
+      "Default credentials",
+      "MongoDB exposure",
+      "Command injection"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Management"
+  },
+  "dlink": {
+    "name": "D-Link Router",
+    "description": "Consumer/business router",
+    "port": 80,
+    "risks": [
+      "Default credentials",
+      "Command injection",
+      "Buffer overflow",
+      "Backdoors"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Network Equipment"
+  },
+  "netgear": {
+    "name": "Netgear Router",
+    "description": "Consumer/business router",
+    "port": 80,
+    "risks": [
+      "Password recovery bypass",
+      "Command injection",
+      "Default credentials"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Equipment"
+  },
+  "linksys": {
+    "name": "Linksys Router",
+    "description": "Consumer wireless router",
+    "port": 80,
+    "risks": [
+      "Default credentials",
+      "CSRF vulnerabilities",
+      "Command injection"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Equipment"
+  },
+  "asus-router": {
+    "name": "ASUS Router",
+    "description": "Consumer/gaming router",
+    "port": 80,
+    "risks": [
+      "AiCloud vulnerabilities",
+      "Command injection",
+      "Information disclosure"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Equipment"
+  },
+  "tplink": {
+    "name": "TP-Link Router",
+    "description": "Consumer networking equipment",
+    "port": 80,
+    "risks": [
+      "Default credentials",
+      "Command injection",
+      "Buffer overflow"
+    ],
+    "risk_level": "HIGH",
+    "category": "Network Equipment"
+  },
+  "bacnet": {
+    "name": "Building Automation and Control Networks",
+    "description": "Protocol for building automation and control systems",
+    "port": 47808,
+    "risks": [
+      "No authentication",
+      "Device manipulation",
+      "Critical infrastructure attacks",
+      "HVAC system compromise",
+      "Physical security bypass"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Industrial Control"
+  },
+  "modbus": {
+    "name": "Modbus Protocol",
+    "description": "Industrial communication protocol for PLCs and SCADA",
+    "port": 502,
+    "risks": [
+      "No authentication",
+      "No encryption",
+      "Device control takeover",
+      "Industrial process manipulation",
+      "SCADA system compromise"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Industrial Control"
+  },
+  "s7": {
+    "name": "Siemens S7 Protocol",
+    "description": "Siemens proprietary PLC communication protocol",
+    "port": 102,
+    "risks": [
+      "No authentication",
+      "PLC programming access",
+      "Industrial process control",
+      "Ladder logic manipulation",
+      "Safety system bypass"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Industrial Control"
+  },
+  "ipmi": {
+    "name": "Intelligent Platform Management Interface",
+    "description": "Hardware management protocol for servers",
+    "port": 623,
+    "risks": [
+      "Default credentials",
+      "BMC vulnerabilities",
+      "Remote power control",
+      "Hardware manipulation",
+      "Out-of-band access"
+    ],
+    "risk_level": "HIGH",
+    "category": "Server Management"
+  },
+  "hp-ilo": {
+    "name": "HP Integrated Lights-Out",
+    "description": "HP server remote management interface",
+    "port": 443,
+    "risks": [
+      "Default credentials",
+      "Remote console access",
+      "Virtual media mounting",
+      "Firmware vulnerabilities",
+      "Complete server control"
+    ],
+    "risk_level": "HIGH",
+    "category": "Server Management"
+  },
+  "idrac": {
+    "name": "Dell Integrated Dell Remote Access Controller",
+    "description": "Dell server remote management interface",
+    "port": 443,
+    "risks": [
+      "Authentication bypass",
+      "Remote console access",
+      "Virtual media abuse",
+      "Firmware manipulation",
+      "Server takeover"
+    ],
+    "risk_level": "HIGH",
+    "category": "Server Management"
+  },
+  "afp": {
+    "name": "Apple Filing Protocol",
+    "description": "Apple's proprietary network protocol for file services",
+    "port": 548,
+    "risks": [
+      "Weak authentication",
+      "Directory traversal",
+      "Information disclosure",
+      "Guest access abuse"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "File Services"
+  },
+  "upnp": {
+    "name": "Universal Plug and Play",
+    "description": "Protocol for device discovery and control on networks",
+    "port": 1900,
+    "risks": [
+      "No authentication",
+      "Device manipulation",
+      "NAT traversal abuse",
+      "DDoS amplification",
+      "Firewall bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Device Discovery"
+  },
+  "ws-discovery": {
+    "name": "Web Services Dynamic Discovery",
+    "description": "Protocol for discovering services on a network",
+    "port": 3702,
+    "risks": [
+      "Service enumeration",
+      "Information disclosure",
+      "Network reconnaissance",
+      "Device fingerprinting"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Service Discovery"
+  },
+  "coap": {
+    "name": "Constrained Application Protocol",
+    "description": "Web transfer protocol for IoT and constrained devices",
+    "port": 5683,
+    "risks": [
+      "No authentication default",
+      "IoT device manipulation",
+      "Amplification attacks",
+      "Resource exhaustion"
+    ],
+    "risk_level": "HIGH",
+    "category": "IoT"
+  },
+  "mqtt": {
+    "name": "Message Queuing Telemetry Transport",
+    "description": "Lightweight messaging protocol for IoT devices",
+    "port": 1883,
+    "risks": [
+      "No authentication default",
+      "Message interception",
+      "IoT device control",
+      "Topic hijacking",
+      "Sensor data manipulation"
+    ],
+    "risk_level": "HIGH",
+    "category": "IoT"
+  },
+  "mqtts": {
+    "name": "MQTT Secure",
+    "description": "MQTT with TLS/SSL encryption",
+    "port": 8883,
+    "risks": [
+      "Certificate validation bypass",
+      "Weak cipher suites",
+      "Topic authorization issues"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "IoT"
+  },
+  "amqp": {
+    "name": "Advanced Message Queuing Protocol",
+    "description": "Message-oriented middleware protocol",
+    "port": 5672,
+    "risks": [
+      "Queue manipulation",
+      "Message tampering",
+      "Authentication bypass",
+      "Resource exhaustion"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Message Queue"
+  },
+  "haproxy": {
+    "name": "HAProxy",
+    "description": "High availability load balancer and proxy server",
+    "port": 8404,
+    "risks": [
+      "Statistics page exposure",
+      "Configuration disclosure",
+      "Backend server enumeration",
+      "Load balancing bypass"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Load Balancer"
+  },
+  "vault": {
+    "name": "HashiCorp Vault",
+    "description": "Secrets management and data protection service",
+    "port": 8200,
+    "risks": [
+      "Token theft",
+      "Policy bypass",
+      "Secret exposure",
+      "Authentication vulnerabilities"
+    ],
+    "risk_level": "HIGH",
+    "category": "Secret Management"
+  },
+  "nomad": {
+    "name": "HashiCorp Nomad",
+    "description": "Workload orchestrator and scheduler",
+    "port": 4646,
+    "risks": [
+      "Job manipulation",
+      "Resource allocation abuse",
+      "ACL bypass",
+      "Container escape"
+    ],
+    "risk_level": "HIGH",
+    "category": "Orchestration"
+  },
+  "harbor": {
+    "name": "Harbor Registry",
+    "description": "Cloud native registry for container images",
+    "port": 443,
+    "risks": [
+      "Image tampering",
+      "Registry poisoning",
+      "Authentication bypass",
+      "Malicious image distribution"
+    ],
+    "risk_level": "HIGH",
+    "category": "Container Registry"
+  },
+  "nexus": {
+    "name": "Sonatype Nexus Repository",
+    "description": "Universal repository manager",
+    "port": 8081,
+    "risks": [
+      "Repository poisoning",
+      "Artifact tampering",
+      "Supply chain attacks",
+      "Authentication bypass"
+    ],
+    "risk_level": "HIGH",
+    "category": "Artifact Repository"
+  },
+  "jfrog": {
+    "name": "JFrog Artifactory",
+    "description": "Universal artifact repository manager",
+    "port": 8082,
+    "risks": [
+      "Artifact poisoning",
+      "Supply chain compromise",
+      "Repository manipulation",
+      "Build artifact tampering"
+    ],
+    "risk_level": "HIGH",
+    "category": "Artifact Repository"
+  },
+  "sonarqube": {
+    "name": "SonarQube",
+    "description": "Code quality and security analysis platform",
+    "port": 9000,
+    "risks": [
+      "Source code exposure",
+      "Authentication bypass",
+      "Project manipulation",
+      "Security scan tampering"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Code Analysis"
+  },
+  "hashcat-api": {
+    "name": "Hashcat API",
+    "description": "Password recovery tool API interface",
+    "port": 8080,
+    "risks": [
+      "Password hash exposure",
+      "Computational resource abuse",
+      "Credential cracking",
+      "No authentication default"
+    ],
+    "risk_level": "HIGH",
+    "category": "Password Tools"
+  },
+  "nessus": {
+    "name": "Tenable Nessus",
+    "description": "Vulnerability scanner and assessment tool",
+    "port": 8834,
+    "risks": [
+      "Scan result manipulation",
+      "Network reconnaissance data",
+      "Vulnerability database access",
+      "Scanner abuse"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Vulnerability Scanner"
+  },
+  "openvas": {
+    "name": "OpenVAS",
+    "description": "Open-source vulnerability scanner",
+    "port": 9392,
+    "risks": [
+      "Scan configuration tampering",
+      "Vulnerability data exposure",
+      "Network discovery abuse",
+      "False positive injection"
+    ],
+    "risk_level": "MEDIUM",
+    "category": "Vulnerability Scanner"
+  },
+  "metasploit": {
+    "name": "Metasploit Framework",
+    "description": "Penetration testing and exploit development platform",
+    "port": 55553,
+    "risks": [
+      "Exploit execution",
+      "Payload deployment",
+      "Session hijacking",
+      "Complete system compromise",
+      "Privilege escalation"
+    ],
+    "risk_level": "CRITICAL",
+    "category": "Penetration Testing"
+  },
+  "beef": {
+    "name": "Browser Exploitation Framework",
+    "description": "Web browser penetration testing tool",
+    "port": 3000,
+    "risks": [
+      "Browser hooking",
+      "Client-side exploitation",
+      "Social engineering attacks",
+      "Credential harvesting",
+      "Cross-site scripting"
+    ],
+    "risk_level": "HIGH",
+    "category": "Penetration Testing"
+  }
+}
