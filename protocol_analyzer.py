@@ -97,20 +97,22 @@ class ProtocolAnalyzer:
         if not valid_protocols:
             return "No valid protocols found for summary."
 
-        summary = ["\n" + "=" * 60, "POSSIBLE FINDINGS", "=" * 60]
-        summary.append(f"Total Protocols Analyzed: {len(valid_protocols)}")
-        summary.append("")
-
-        critical_high_medium_total = 0
-        for risk_level in ['CRITICAL', 'HIGH', 'MEDIUM']:
-            count = risk_counts[risk_level]
-            critical_high_medium_total += count
-            if count > 0:
-                color = self.get_risk_color(risk_level)
-                reset = self.reset_color()
-                summary.append(f"{color}{risk_level}{reset}: {count} protocol(s)")
-
+        # Calculate total risky protocols
+        critical_high_medium_total = risk_counts['CRITICAL'] + risk_counts['HIGH'] + risk_counts['MEDIUM']
+        
+        # Only show "POSSIBLE FINDINGS" section if there are risky protocols
         if critical_high_medium_total > 0:
+            summary = ["\n" + "=" * 60, "POSSIBLE FINDINGS", "=" * 60]
+            summary.append(f"Total Protocols Analyzed: {len(valid_protocols)}")
+            summary.append("")
+
+            for risk_level in ['CRITICAL', 'HIGH', 'MEDIUM']:
+                count = risk_counts[risk_level]
+                if count > 0:
+                    color = self.get_risk_color(risk_level)
+                    reset = self.reset_color()
+                    summary.append(f"{color}{risk_level}{reset}: {count} protocol(s)")
+
             summary.append(f"\nTotal Possible Findings: {critical_high_medium_total} protocol(s)")
             summary.append("Affected Protocols:")
 
@@ -123,7 +125,14 @@ class ProtocolAnalyzer:
                 reset = self.reset_color()
                 summary.append(f"  • {proto} ({color}{level}{reset})")
 
-        return '\n'.join(summary)
+            return '\n'.join(summary)
+        else:
+            # No risky protocols found
+            summary = ["\n" + "=" * 60, "ANALYSIS SUMMARY", "=" * 60]
+            summary.append(f"Total Protocols Analyzed: {len(valid_protocols)}")
+            summary.append(f"No critical, high, or medium risk protocols detected")
+            summary.append(f"All protocols are rated as LOW risk")
+            return '\n'.join(summary)
     
     def reload_database(self):
         """Reload the database from the JSON file"""
